@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="update_exchange_rate" model="ir.ui.view">
+            <field name="name">Update Exchange Rate</field>
+            <field name="model">update.rate</field>
+            <field name="arch" type="xml">
+                <form string="Exchange Rate wizard">
+                    <sheet>
+                        <group>
+                            <field name="update_rate" required="1"/>
+                         </group>
+                        <footer>
+                            <button name="update_exchange_rate" class="oe_highlight" confirm="
+Êtes-vous sûr de vouloir mettre à jour le taux de change ?" string="Modifier" type="object"/>
+                            Ou
+                            <button special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      <!--
+        <record id="action_update_exchange_wizard" model="ir.actions.act_window">
+            <field name="name">Update Exchange Rate</field>
+            <field name="res_model">update.rate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    -->
+    </data>
+</odoo>
