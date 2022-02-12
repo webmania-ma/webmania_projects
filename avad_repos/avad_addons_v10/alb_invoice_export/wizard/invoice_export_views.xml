@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <record id="view_invoice_export_wizard_form" model="ir.ui.view">
+            <field name="name">invoice.export.wizard.form</field>
+            <field name="model">invoice.export.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <group>
+                        <field name="date_from" />
+                        <field name="date_end"/>
+                        <field name="ouvert"/>
+                        <field name="paid"/>
+                        <field name="partial"/>
+                    </group>
+
+                    <footer>
+                        <button string="Print" type="object" name="action_print" class="btn-primary"/>
+                        <button string="Cancel" special="cancel" class="btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="invoice_export_wizard_action" model="ir.actions.act_window">
+            <field name="name">Invoice Export Wizard</field>
+            <field name="res_model">invoice.export.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_invoice_export_wizard_root" parent="account.menu_finance_reports" name="Statistiques de vente"
+                  />
+
+        <menuitem id="menu_invoice_export_wizard" parent="menu_invoice_export_wizard_root" name="Statistiques de vente"
+                  action="invoice_export_wizard_action" />
+
+
+
+
+        <report
+            id="partner_xlsx"
+            model="invoice.export.wizard"
+            string="Print to XLSX"
+            report_type="xlsx"
+            name="invoice.export.wizard.xlsx"
+            file="invoice.export.wizard.xlsx"
+            attachment_use="False"
+        />
+
+
+
+    </data>
+</odoo>
