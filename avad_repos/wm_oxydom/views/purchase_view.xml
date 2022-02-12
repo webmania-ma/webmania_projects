@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+            <record model="ir.ui.view" id="purchase_order_form_inherited">
+                    <field name="name">purchase.order.form.inherited</field>
+                    <field name="model">purchase.order</field>
+                    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+                    <field name="arch" type="xml">
+                      <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                        <field name="cost_price"/>
+                      </xpath>
+                    </field>
+            </record>
+        <record id="view_purchase_form_currency_rate_inherit" model="ir.ui.view">
+            <field name="name">purchase.currency.rate.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <field name="partner_ref" position="after">
+                    <field name="controle_workflow" invisible="1"/>
+                    <field name="check_shipped" invisible="1" />
+                     <field name="currency_name" invisible="1" />
+                    <field name="manual_currency_rate_active" attrs="{'invisible' : [('controle_workflow','=',False)],'readonly': [('state','in', ('purchase','done'))]}" groups="base.group_multi_currency" />
+                    <field name="manual_currency_rate" attrs="{'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)], 'readonly': [('state','in', ('purchase','done'))]}" groups="base.group_multi_currency" />
+                   <field name="current_rate" attrs="{'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"   groups="base.group_multi_currency"/>
+                </field>
+                 <div name="button_box" position="inside">
+                   <button class="oe_stat_button" string="Dossier Import" attrs="{'invisible': ['|',('check_shipped', '=', False),('manual_currency_rate_active', '=', False)]}" type="object" name="get_dossier_import"
+                        icon="fa-folder">
+                    </button>
+                </div>
+                <!--
+                    <xpath expr="/form/sheet/div[@name='button_box']/button[@name='action_view_picking']" position="attributes">
+                          <attribute  name="attrs">{'invisible':[('controle_workflow', '=', False)]}</attribute>
+                    </xpath>
+                       <xpath expr="/form/sheet/div[@name='button_box']/button[@name='action_view_invoice']" position="attributes">
+                           <attribute  name="attrs" >{'invisible':[('controle_workflow', '=', False)]}</attribute >
+                       </xpath>
+                -->
+                    <xpath expr="/form/header/button[3]" position="after">
+				        <button   string="Taux Change"  class="oe_highlight" type="object" context="{'active_id': active_id}" name="call_wizard" attrs="{'invisible': ['|',('state','not in', ('purchase','done')),('check_shipped', '=', True)]}" />
+    		        </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
