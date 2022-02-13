@@ -7,7 +7,9 @@ class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
     controle_workflow = fields.Boolean(string="Controle Workflow", default=False)
-    current_rate = fields.Float('Taux actuel', digits=(12, 4), related='currency_id.rate')
+    
+    current_rate = fields.Float('Taux actuel', digits=(12, 6), related='currency_id.rate')
+
     manual_currency_rate_active = fields.Boolean('Appliquer Taux Change Manuel', default=False)
     manual_currency_rate = fields.Float('Taux Change', digits=(12, 4))
     check_shipped = fields.Boolean(compute="_compute_check_shipped")

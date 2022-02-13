@@ -24,6 +24,6 @@ class CurrencyExt(models.Model):
                 return to_currency.rate / from_currency.rate
             else:
                 return to_currency.rate / manual_rate
-
+                
         Currency._get_conversion_rate = _get_conversion_rate_enhanced
         return super(CurrencyExt, self)._register_hook()
