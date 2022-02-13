@@ -11,7 +11,7 @@ class PurchaseOrder(models.Model):
     current_rate = fields.Float('Taux actuel', digits=(12, 6), related='currency_id.rate')
 
     manual_currency_rate_active = fields.Boolean('Appliquer Taux Change Manuel', default=False)
-    manual_currency_rate = fields.Float('Taux Change', digits=(12, 4))
+    manual_currency_rate = fields.Float('Taux Change', digits=(12, 6))
     check_shipped = fields.Boolean(compute="_compute_check_shipped")
     currency_name = fields.Char('Currency Name')
 
