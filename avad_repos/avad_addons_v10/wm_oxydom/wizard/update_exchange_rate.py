@@ -8,7 +8,8 @@ class AssignExchange(models.TransientModel):
 
     _name = 'update.rate'
 
-    update_rate = fields.Float(string='Taux Change ', digits=(12, 4), required=True)
+    update_rate = fields.Float(string='X-Rate', digits=(12, 3), required=True)
+    exemple = fields.Text(string="Exemple", default="Ex: 8.751", readonly=True)
 
 
     @api.multi
@@ -32,7 +33,7 @@ class AssignExchange(models.TransientModel):
                         stock_move = stock_move_obj.search([('origin', '=', source_origin), ('product_id', '=', product_id)])
                         stock_move.write({'price_unit':price_unit })
             else:
-                raise ValidationError(_('Veuillez entrer le taux de change correct'))
+                raise ValidationError(_('Veuillez entrer le X-Rate  superieure ou egal 1'))
 
 
 

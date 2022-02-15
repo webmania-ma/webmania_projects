@@ -10,10 +10,11 @@
                     <sheet>
                         <group>
                             <field name="update_rate" required="1"/>
+
                          </group>
+                        <field name="exemple"   nolabel="1"/>
                         <footer>
-                            <button name="update_exchange_rate" class="oe_highlight" confirm="
-Êtes-vous sûr de vouloir mettre à jour le taux de change ?" string="Modifier" type="object"/>
+                            <button name="update_exchange_rate" class="oe_highlight" confirm="Êtes-vous sûr de vouloir mettre à jour le taux de change ?" string="Modifier" type="object"/>
                             Ou
                             <button special="cancel" string="Cancel"/>
                         </footer>
