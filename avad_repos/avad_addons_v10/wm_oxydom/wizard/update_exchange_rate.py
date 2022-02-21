@@ -8,7 +8,7 @@ class AssignExchange(models.TransientModel):
 
     _name = 'update.rate'
 
-    update_rate = fields.Float(string='X-Rate', digits=(12, 3), required=True)
+    update_rate = fields.Float(string='Taux change', digits=(12, 3), required=True)
     exemple = fields.Text(string="Exemple", default="Ex: 8.751", readonly=True)
 
 

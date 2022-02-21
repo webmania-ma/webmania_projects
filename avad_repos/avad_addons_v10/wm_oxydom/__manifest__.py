@@ -13,7 +13,8 @@
         "reports/report_bon_commande_template.xml",
         "wizard/update_exchange_rate_wizard.xml",
         "views/purchase_view.xml",
-        "views/customer_invoice.xml",
+        #"views/customer_invoice.xml",
+        "views/product_template_inherited.xml"
     ],
     "installable": True
 }
