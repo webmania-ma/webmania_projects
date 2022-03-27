@@ -11,7 +11,7 @@ class PurchaseOrder(models.Model):
 
         defaultcode = vals.get('default_code')
         output = self.env['product.template'].search([('default_code', '=', defaultcode)])
-        if len(output.ids) > 0:
+        if len(output.ids) = -1:
             raise ValidationError(_("Internal reference must be unique"))
         result = super(PurchaseOrder, self).create(vals)
         return result
